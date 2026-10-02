@@ -1,0 +1,141 @@
+{
+  "reference_commit": "af94bdbdc84491f4c9aaa9a5abd100d61e7abef6",
+  "reference_script_sha256": "f8f90887c7a693c846c22ecc427be5a447067473333a2ab1201b4ed85b51305e",
+  "kernel_version": "6.12.67",
+  "kernel_revision": "0~20260123.ga077982",
+  "artifacts": [
+    {
+      "psabi": "x64v1",
+      "kind": "headers",
+      "file": "linux-headers-6.12.67-x64v1-xanmod1_6.12.67-x64v1-xanmod1-0~20260123.ga077982_amd64.deb",
+      "url": "https://www.openmptcprouter.com/kernel/linux-headers-6.12.67-x64v1-xanmod1_6.12.67-x64v1-xanmod1-0~20260123.ga077982_amd64.deb",
+      "resolved_url": "https://www.openmptcprouter.com/kernel/linux-headers-6.12.67-x64v1-xanmod1_6.12.67-x64v1-xanmod1-0~20260123.ga077982_amd64.deb",
+      "sha256": "8e1aa535f6bea24cf8824225a2e50543a2945a25774b53b94f3fcacd8f8036fa",
+      "size_bytes": 9302004,
+      "package": "linux-headers-6.12.67-x64v1-xanmod1",
+      "version": "6.12.67-x64v1-xanmod1-0~20260123.ga077982",
+      "architecture": "amd64",
+      "sourceforge_published_sha256": "8e1aa535f6bea24cf8824225a2e50543a2945a25774b53b94f3fcacd8f8036fa",
+      "sourceforge_sha256_match": true,
+      "sourceforge_changes_url": "https://downloads.sourceforge.net/project/xanmod/releases/lts/6.12.67-xanmod1/6.12.67-x64v1-xanmod1/linux-upstream_6.12.67-x64v1-xanmod1-0~20260123.ga077982_amd64.changes"
+    },
+    {
+      "psabi": "x64v2",
+      "kind": "headers",
+      "file": "linux-headers-6.12.67-x64v2-xanmod1_6.12.67-x64v2-xanmod1-0~20260123.ga077982_amd64.deb",
+      "url": "https://www.openmptcprouter.com/kernel/linux-headers-6.12.67-x64v2-xanmod1_6.12.67-x64v2-xanmod1-0~20260123.ga077982_amd64.deb",
+      "resolved_url": "https://www.openmptcprouter.com/kernel/linux-headers-6.12.67-x64v2-xanmod1_6.12.67-x64v2-xanmod1-0~20260123.ga077982_amd64.deb",
+      "sha256": "c908514c082eacaa776ce2883215e865becc5d751cc20c68f61fcd59c4892738",
+      "size_bytes": 9301244,
+      "package": "linux-headers-6.12.67-x64v2-xanmod1",
+      "version": "6.12.67-x64v2-xanmod1-0~20260123.ga077982",
+      "architecture": "amd64",
+      "sourceforge_published_sha256": "c908514c082eacaa776ce2883215e865becc5d751cc20c68f61fcd59c4892738",
+      "sourceforge_sha256_match": true,
+      "sourceforge_changes_url": "https://downloads.sourceforge.net/project/xanmod/releases/lts/6.12.67-xanmod1/6.12.67-x64v2-xanmod1/linux-upstream_6.12.67-x64v2-xanmod1-0~20260123.ga077982_amd64.changes"
+    },
+    {
+      "psabi": "x64v3",
+      "kind": "headers",
+      "file": "linux-headers-6.12.67-x64v3-xanmod1_6.12.67-x64v3-xanmod1-0~20260123.ga077982_amd64.deb",
+      "url": "https://www.openmptcprouter.com/kernel/linux-headers-6.12.67-x64v3-xanmod1_6.12.67-x64v3-xanmod1-0~20260123.ga077982_amd64.deb",
+      "resolved_url": "https://www.openmptcprouter.com/kernel/linux-headers-6.12.67-x64v3-xanmod1_6.12.67-x64v3-xanmod1-0~20260123.ga077982_amd64.deb",
+      "sha256": "d10b7db11cef8baa6586e558a64c15abbc3c95ac0c54059123ad774f1109c171",
+      "size_bytes": 9301476,
+      "package": "linux-headers-6.12.67-x64v3-xanmod1",
+      "version": "6.12.67-x64v3-xanmod1-0~20260123.ga077982",
+      "architecture": "amd64",
+      "sourceforge_published_sha256": "d10b7db11cef8baa6586e558a64c15abbc3c95ac0c54059123ad774f1109c171",
+      "sourceforge_sha256_match": true,
+      "sourceforge_changes_url": "https://downloads.sourceforge.net/project/xanmod/releases/lts/6.12.67-xanmod1/6.12.67-x64v3-xanmod1/linux-upstream_6.12.67-x64v3-xanmod1-0~20260123.ga077982_amd64.changes"
+    },
+    {
+      "psabi": "x64v1",
+      "kind": "image",
+      "file": "linux-image-6.12.67-x64v1-xanmod1_6.12.67-x64v1-xanmod1-0~20260123.ga077982_amd64.deb",
+      "url": "https://www.openmptcprouter.com/kernel/linux-image-6.12.67-x64v1-xanmod1_6.12.67-x64v1-xanmod1-0~20260123.ga077982_amd64.deb",
+      "resolved_url": "https://www.openmptcprouter.com/kernel/linux-image-6.12.67-x64v1-xanmod1_6.12.67-x64v1-xanmod1-0~20260123.ga077982_amd64.deb",
+      "sha256": "818e1d2a43215d72263d947ae8ce78d2f2aeb466a927c407a4bf5015cd42f9a1",
+      "size_bytes": 98193644,
+      "package": "linux-image-6.12.67-x64v1-xanmod1",
+      "version": "6.12.67-x64v1-xanmod1-0~20260123.ga077982",
+      "architecture": "amd64",
+      "sourceforge_published_sha256": "818e1d2a43215d72263d947ae8ce78d2f2aeb466a927c407a4bf5015cd42f9a1",
+      "sourceforge_sha256_match": true,
+      "sourceforge_changes_url": "https://downloads.sourceforge.net/project/xanmod/releases/lts/6.12.67-xanmod1/6.12.67-x64v1-xanmod1/linux-upstream_6.12.67-x64v1-xanmod1-0~20260123.ga077982_amd64.changes"
+    },
+    {
+      "psabi": "x64v2",
+      "kind": "image",
+      "file": "linux-image-6.12.67-x64v2-xanmod1_6.12.67-x64v2-xanmod1-0~20260123.ga077982_amd64.deb",
+      "url": "https://www.openmptcprouter.com/kernel/linux-image-6.12.67-x64v2-xanmod1_6.12.67-x64v2-xanmod1-0~20260123.ga077982_amd64.deb",
+      "resolved_url": "https://www.openmptcprouter.com/kernel/linux-image-6.12.67-x64v2-xanmod1_6.12.67-x64v2-xanmod1-0~20260123.ga077982_amd64.deb",
+      "sha256": "a3108ee05e4494ab930fe8e001cbc416a3b0b9382c7158e993fbe3611e96f0d6",
+      "size_bytes": 98178384,
+      "package": "linux-image-6.12.67-x64v2-xanmod1",
+      "version": "6.12.67-x64v2-xanmod1-0~20260123.ga077982",
+      "architecture": "amd64",
+      "sourceforge_published_sha256": "a3108ee05e4494ab930fe8e001cbc416a3b0b9382c7158e993fbe3611e96f0d6",
+      "sourceforge_sha256_match": true,
+      "sourceforge_changes_url": "https://downloads.sourceforge.net/project/xanmod/releases/lts/6.12.67-xanmod1/6.12.67-x64v2-xanmod1/linux-upstream_6.12.67-x64v2-xanmod1-0~20260123.ga077982_amd64.changes"
+    },
+    {
+      "psabi": "x64v3",
+      "kind": "image",
+      "file": "linux-image-6.12.67-x64v3-xanmod1_6.12.67-x64v3-xanmod1-0~20260123.ga077982_amd64.deb",
+      "url": "https://www.openmptcprouter.com/kernel/linux-image-6.12.67-x64v3-xanmod1_6.12.67-x64v3-xanmod1-0~20260123.ga077982_amd64.deb",
+      "resolved_url": "https://www.openmptcprouter.com/kernel/linux-image-6.12.67-x64v3-xanmod1_6.12.67-x64v3-xanmod1-0~20260123.ga077982_amd64.deb",
+      "sha256": "92a94b6de79b89cd866e2d23471db5417b1a323e0aeb07040d4ce96178ec40ff",
+      "size_bytes": 98152324,
+      "package": "linux-image-6.12.67-x64v3-xanmod1",
+      "version": "6.12.67-x64v3-xanmod1-0~20260123.ga077982",
+      "architecture": "amd64",
+      "sourceforge_published_sha256": "92a94b6de79b89cd866e2d23471db5417b1a323e0aeb07040d4ce96178ec40ff",
+      "sourceforge_sha256_match": true,
+      "sourceforge_changes_url": "https://downloads.sourceforge.net/project/xanmod/releases/lts/6.12.67-xanmod1/6.12.67-x64v3-xanmod1/linux-upstream_6.12.67-x64v3-xanmod1-0~20260123.ga077982_amd64.changes"
+    }
+  ],
+  "errors": [],
+  "collector": "ogn-kernel-6.12.67-package-validation/1",
+  "checked_utc": "2026-10-02T00:58:27.647233+00:00",
+  "reference_url": "https://github.com/Ysurac/openmptcprouter-vps/blob/af94bdbdc84491f4c9aaa9a5abd100d61e7abef6/debian9-x86_64.sh",
+  "static_checks": {
+    "kernel_version_equal": true,
+    "kernel_revision_equal": true,
+    "cpu_selection_equal": true,
+    "wget_commands_equal": true,
+    "dpkg_commands_equal": true,
+    "vpsurl_equal": true,
+    "china_default_equal": true,
+    "upstream_1046_untouched": true,
+    "shell_syntax": true,
+    "zero_fuzz_patch_reproduces_payload": true,
+    "grub_regression_tests_pass": true,
+    "grub_6_12_67_nested_fixture_pass": true,
+    "runtime_kernel_check_accepts_67_rejects_47_and_cloud": true
+  },
+  "sourceforge_checksum_records": [
+    {
+      "psabi": "x64v1",
+      "file": "linux-upstream_6.12.67-x64v1-xanmod1-0~20260123.ga077982_amd64.changes",
+      "url": "https://downloads.sourceforge.net/project/xanmod/releases/lts/6.12.67-xanmod1/6.12.67-x64v1-xanmod1/linux-upstream_6.12.67-x64v1-xanmod1-0~20260123.ga077982_amd64.changes",
+      "sha256": "b7965b212e9ac6012ff923e05f9f147c12329f5bc443559834f57e344cee8aa6"
+    },
+    {
+      "psabi": "x64v2",
+      "file": "linux-upstream_6.12.67-x64v2-xanmod1-0~20260123.ga077982_amd64.changes",
+      "url": "https://downloads.sourceforge.net/project/xanmod/releases/lts/6.12.67-xanmod1/6.12.67-x64v2-xanmod1/linux-upstream_6.12.67-x64v2-xanmod1-0~20260123.ga077982_amd64.changes",
+      "sha256": "70fa000fcc7ad09f7aa1d8c0b0ce6366942cbfa53b5d65f38c82b1edbb8405b1"
+    },
+    {
+      "psabi": "x64v3",
+      "file": "linux-upstream_6.12.67-x64v3-xanmod1-0~20260123.ga077982_amd64.changes",
+      "url": "https://downloads.sourceforge.net/project/xanmod/releases/lts/6.12.67-xanmod1/6.12.67-x64v3-xanmod1/linux-upstream_6.12.67-x64v3-xanmod1-0~20260123.ga077982_amd64.changes",
+      "sha256": "9b985a83ab5cadfc19e14bd7e0046d65d960edb6d2114af0d6e2a9497783a719"
+    }
+  ],
+  "runtime_install_and_reboot_tested": false,
+  "paired_router_tested": false,
+  "kernel_download_policy": "Online; validation cache is outside the installation bundle.",
+  "compatibility_scope": "Package identity and static installer checks only; upstream 0.1082 selection is not a full 0.1046 compatibility guarantee."
+}

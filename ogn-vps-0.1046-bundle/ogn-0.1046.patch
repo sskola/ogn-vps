@@ -1,0 +1,199 @@
+--- upstream/debian9-x86_64.sh
++++ payload/debian9-x86_64.sh
+@@ -86,7 +86,7 @@
+ OBFS_VERSION="486bebd9208539058e57e23a12f23103016e09b4"
+ OBFS_BINARY_VERSION="0.0.5-1"
+ OMR_ADMIN_VERSION="ccac898d295e5c0d74229d66f0eb04c9f051349d"
+-OMR_ADMIN_BINARY_VERSION="0.16+20260113"
++OMR_ADMIN_BINARY_VERSION="0.16+20251126"
+ #OMR_ADMIN_BINARY_VERSION="0.3+20220827"
+ DSVPN_VERSION="3b99d2ef6c02b2ef68b5784bec8adfdd55b29b1a"
+ DSVPN_BINARY_VERSION="0.1.4-2"
+@@ -109,7 +109,7 @@
+ REPO="repo.openmptcprouter.com"
+ CHINA=${CHINA:-no}
+ 
+-OMR_VERSION="0.1043-rolling-test"
++OMR_VERSION="0.1046-rolling"
+ 
+ DIR=$( pwd )
+ #"
+@@ -212,7 +212,7 @@
+ fi
+ 
+ # Force update key
+-[ -f /etc/apt/sources.list.d/openmptcprouter.list ] && {
++[ -f /etc/apt/sources.list.d/openmptcprouter.list ] && [ -z "${OGN_LOCAL_REPO:-}" ] && {
+ 	echo "Update ${REPO} key"
+ 	apt-key del '2FDF 70C8 228B 7F04 42FE  59F6 608F D17B 2B24 D936' >/dev/null 2>&1 || true
+ 	if [ "$CHINA" = "yes" ]; then
+@@ -324,7 +324,11 @@
+ 
+ # Add OpenMPTCProuter repo
+ echo "Add OpenMPTCProuter repo..."
+-if [ "$CHINA" = "yes" ]; then
++if [ -n "${OGN_LOCAL_REPO:-}" ]; then
++	[ -f "${OGN_LOCAL_REPO}/Packages" ] || { echo "Missing local OMR package index: ${OGN_LOCAL_REPO}/Packages" >&2; exit 1; }
++	echo "deb [trusted=yes arch=amd64] file:${OGN_LOCAL_REPO} ./" > /etc/apt/sources.list.d/openmptcprouter.list
++	rm -f /etc/apt/sources.list.d/openmptcprouter-test.list
++elif [ "$CHINA" = "yes" ]; then
+ 	echo "Install git..."
+ 	apt-get -y install git
+ 	rm -rf /var/lib/openmptcprouter-vps-debian 
+@@ -449,6 +453,104 @@
+ 		echo 'GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"' > /etc/default/grub
+ 	}
+ fi
++# Backported from upstream 0.1082: select nested GRUB entries by full path.
++# Print the path GRUB needs to select the menu entry matching $2 in the
++# grub.cfg passed as $1. GRUB resolves "default" against the top level menu
++# only: an entry buried in a submenu has to be named as the id (or index) of
++# every submenu above it, separated by ">" (see GRUB_DEFAULT in grub.info).
++# grub-mkconfig keeps only the highest version kernel at the top level and
++# puts every other one under "Advanced options", so the bare entry id is
++# almost never enough.
++grub_menu_entry_path() {
++	awk -v pat="$2" '
++		function entry_id(l,   k, n, a) {
++			k = index(l, "menuentry_id_option")
++			if (k == 0)
++				return ""
++			n = split(substr(l, k), a, q)
++			return (n >= 2) ? a[2] : ""
++		}
++		BEGIN {
++			q = sprintf("%c", 39)
++			depth = 0
++			inentry = 0
++			cnt[0] = 0
++			npfx[0] = ""
++			ipfx[0] = ""
++		}
++		{
++			line = $0
++			sub(/^[ \t]+/, "", line)
++			if (!inentry && line ~ /^submenu[ \t]/) {
++				id = entry_id(line)
++				num = npfx[depth] cnt[depth]
++				ids = (id == "") ? "" : ipfx[depth] id
++				cnt[depth]++
++				depth++
++				cnt[depth] = 0
++				npfx[depth] = num ">"
++				ipfx[depth] = (ids == "") ? "" : ids ">"
++				next
++			}
++			if (!inentry && line ~ /^menuentry[ \t]/) {
++				inentry = 1
++				if (line ~ pat && line !~ /recovery/) {
++					id = entry_id(line)
++					if (id != "" && (depth == 0 || ipfx[depth] != ""))
++						print ipfx[depth] id
++					else
++						print npfx[depth] cnt[depth]
++					exit
++				}
++				cnt[depth]++
++				next
++			}
++			if (line ~ /^}/) {
++				if (inentry)
++					inentry = 0
++				else if (depth > 0)
++					depth--
++			}
++		}
++	' "$1"
++}
++
++set_grub_default_kernel() {
++	version="$1"
++	name="$2"
++	grub_cfg=""
++	grub_deflt=""
++	entry=""
++	# grub.cfg is in /boot/grub on Debian and Ubuntu, /boot/grub2 elsewhere
++	grub_cfg="$(find /boot/grub /boot/grub2 -maxdepth 1 -name grub.cfg 2>/dev/null | head -n 1)"
++	grub_deflt="$(find /etc/default -maxdepth 1 \( -name grub -o -name grub2 \) 2>/dev/null | head -n 1)"
++	if [ -z "$grub_cfg" ] || [ -z "$grub_deflt" ]; then
++		echo "WARNING: no GRUB configuration found, can't set kernel ${version} ${name} as the default one" >&2
++		echo "WARNING: set the default boot kernel by hand, else this VPS reboots on $(uname -r)" >&2
++		return 1
++	fi
++	if ! command -v grub-mkconfig >/dev/null 2>&1; then
++		echo "ERROR: grub-mkconfig is unavailable; cannot select kernel ${version} ${name}" >&2
++		return 1
++	fi
++	# The kernel package postinst already ran update-grub, but regenerate
++	# anyway: an interrupted or skipped hook would leave the new kernel out.
++	grub-mkconfig -o "$grub_cfg" >/dev/null 2>&1
++	entry="$(grub_menu_entry_path "$grub_cfg" "${version}.*${name}")"
++	if [ -z "$entry" ]; then
++		echo "WARNING: kernel ${version} ${name} not found in ${grub_cfg}, GRUB default left untouched" >&2
++		echo "WARNING: set the default boot kernel by hand, else this VPS reboots on $(uname -r)" >&2
++		return 1
++	fi
++	if [ -n "$(grep -m1 '^[[:space:]]*GRUB_DEFAULT=' "$grub_deflt")" ]; then
++		sed -i "s@^[[:space:]]*\(GRUB_DEFAULT=\).*@\1\"${entry}\"@" "$grub_deflt"
++	else
++		echo "GRUB_DEFAULT=\"${entry}\"" >> "$grub_deflt"
++	fi
++	grub-mkconfig -o "$grub_cfg" >/dev/null 2>&1
++	echo "GRUB default boot entry is now ${entry}"
++}
++
+ if [ "$KERNEL" = "5.4" ] || [ "$KERNEL" = "5.15" ]; then
+ 	if [ "$SOURCES" = "yes" ]; then
+ 		wget -O /tmp/linux-image-${KERNEL_RELEASE}_amd64.deb ${VPSURL}kernel/linux-image-${KERNEL_RELEASE}_amd64.deb
+@@ -565,8 +667,8 @@
+ 	if [ "$PSABI" = "x64v4" ]; then
+ 		PSABI="x64v3"
+ 	fi
+-	KERNEL_VERSION="6.12.47"
+-	KERNEL_REV="0~20250912.g88be869"
++	KERNEL_VERSION="6.12.67"
++	KERNEL_REV="0~20260123.ga077982"
+ 	if [ "$CHINA" = "yes" ]; then
+ 		wget -O /tmp/linux-image-${KERNEL_VERSION}-${PSABI}-xanmod1_${KERNEL_VERSION}-${PSABI}-xanmod1-${KERNEL_REV}_amd64.deb https://sourceforge.net/projects/xanmod/files/releases/lts/${KERNEL_VERSION}-xanmod1/${KERNEL_VERSION}-${PSABI}-xanmod1/linux-image-${KERNEL_VERSION}-${PSABI}-xanmod1_${KERNEL_VERSION}-${PSABI}-xanmod1-${KERNEL_REV}_amd64.deb
+ 		wget -O /tmp/linux-headers-${KERNEL_VERSION}-${PSABI}-xanmod1_${KERNEL_VERSION}-${PSABI}-xanmod1-${KERNEL_REV}_amd64.deb https://sourceforge.net/projects/xanmod/files/releases/lts/${KERNEL_VERSION}-xanmod1/${KERNEL_VERSION}-${PSABI}-xanmod1/linux-headers-${KERNEL_VERSION}-${PSABI}-xanmod1_${KERNEL_VERSION}-${PSABI}-xanmod1-${KERNEL_REV}_amd64.deb
+@@ -582,14 +684,7 @@
+ #	echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | tee /etc/apt/sources.list.d/xanmod-release.list
+ #	apt-get update
+ #	apt-get -y install linux-xanmod-lts-x64v3
+-	[ -f /etc/default/grub ] && {
+-		sed -i "s@^\(GRUB_DEFAULT=\).*@\1\"0\"@" /etc/default/grub >/dev/null 2>&1
+-		if [ -f /boot/grub/grub.cfg ]; then 
+-			BOOTNB=$(grep vmlinuz- /boot/grub/grub.cfg | grep -n -m 1 xanmod | sed -e 's/:.*//g' | tr -d '\n')
+-			[ -n "$BOOTNB" ] && sed -i "s@^\(GRUB_DEFAULT=\).*@\1\"${BOOTNB}\"@" /etc/default/grub >/dev/null 2>&1
+-			grub-mkconfig -o /boot/grub/grub.cfg >/dev/null 2>&1
+-		fi
+-	}
++	set_grub_default_kernel "${KERNEL_VERSION}" "${PSABI}-xanmod1"
+ elif [ "$KERNEL" = "6.6" ] && [ "$ID" = "debian" ]; then
+ 	echo 'deb http://deb.debian.org/debian bookworm-backports main' > /etc/apt/sources.list.d/bookworm-backports.list
+ 	apt-get update
+@@ -619,7 +714,7 @@
+ 	#apt-get -y -o Dpkg::Options::="--force-overwrite" install omr-iperf3
+ 	#chmod 644 /lib/systemd/system/iperf3.service
+ 	echo "Install iperf3"
+-	[ "$ARCH" = "amd64" ] && apt-get -y remove omr-iperf3 omr-libiperf0 >/dev/null 2>&1
++	[ "$ARCH" = "amd64" ] && apt-get -y remove omr-iperf3 omr-libiperf0 >/dev/null 2>&1 || true
+ 	if [ "$SOURCES" = "yes" ]; then
+ 		apt-get -y remove iperf3 libiperf0
+ 		apt-get -y install xz-utils devscripts equivs
+@@ -2109,6 +2204,15 @@
+ # Change SSH port to 65222
+ sed -i 's:#Port 22:Port 65222:g' /etc/ssh/sshd_config
+ sed -i 's:Port 22:Port 65222:g' /etc/ssh/sshd_config
++/usr/sbin/sshd -t
++systemctl reload ssh
++# Reload returns before sshd has necessarily reopened its listening sockets.
++OGN_SSH_LISTEN_ATTEMPTS=0
++while ! ss -H -ltn '( sport = :65222 )' | grep -q .; do
++	OGN_SSH_LISTEN_ATTEMPTS=$((OGN_SSH_LISTEN_ATTEMPTS + 1))
++	[ "$OGN_SSH_LISTEN_ATTEMPTS" -lt 10 ] || { echo 'SSH is not listening on 65222; refusing to enable Shorewall.' >&2; exit 1; }
++	sleep 1
++done
+ 
+ # Remove Bind9 if available
+ #systemctl -q disable bind9

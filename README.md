@@ -8,7 +8,7 @@ Log in to your new VPS on its initial SSH port. Run:
 
 ```sh
 cd /home/debian
-wget -4 https://github.com/sskola/ogn-vps/releases/download/0.1046-rolling-ogn/ogn-vps-0.1046-bundle.tar.gz
+wget -4 https://raw.githubusercontent.com/sskola/ogn-vps/main/ogn-vps-0.1046-bundle.tar.gz
 wget -4 https://raw.githubusercontent.com/sskola/ogn-vps/main/ogn-vps-0.1046-bundle.tar.gz.sha256
 sha256sum -c ogn-vps-0.1046-bundle.tar.gz.sha256
 tar -xzf ogn-vps-0.1046-bundle.tar.gz
@@ -34,7 +34,8 @@ Keep the installer-generated API and tunnel credentials private.
 
 ## Contents and validation
 
-- [Download the complete bundle](https://github.com/sskola/ogn-vps/releases/download/0.1046-rolling-ogn/ogn-vps-0.1046-bundle.tar.gz)
+- [Download the complete bundle](https://raw.githubusercontent.com/sskola/ogn-vps/main/ogn-vps-0.1046-bundle.tar.gz)
+- [Browse the complete bundle](ogn-vps-0.1046-bundle/)
 - [SHA-256 checksum](ogn-vps-0.1046-bundle.tar.gz.sha256)
 
 The archive contains the full `ogn-vps-0.1046-bundle/` directory, including the launcher, derived installer, untouched upstream source, all pinned packages, reviewable patch, integrity manifest, detailed instructions and validation history.

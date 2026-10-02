@@ -1,0 +1,224 @@
+Package: libjson-c3
+Source: json-c
+Version: 0.12.1+ds-2+deb10u1
+Architecture: amd64
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Installed-Size: 78
+Depends: libc6 (>= 2.14)
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: https://github.com/json-c/json-c/wiki
+Description: JSON manipulation library - shared library
+ This library allows you to easily construct JSON objects in C,
+ output them as JSON formatted strings and parse JSON formatted
+ strings back into the C representation of JSON objects.
+Filename: ./libjson-c3_0.12.1+ds-2+deb10u1_amd64.deb
+Size: 27276
+SHA256: 5b010246a415b210cb621a54324534cab5ac2cd94481a80705a0f2c426ae8a92
+
+Package: omr-dsvpn
+Version: 0.1.4-2
+Architecture: amd64
+Maintainer: OpenMPTCProuter <contact@openmptcprouter.com>
+Installed-Size: 51
+Section: net
+Priority: optional
+Homepage: https://github.com/angt/glorytun
+Description: A Dead Simple VPN
+ DSVPN is a Dead Simple VPN
+Filename: ./omr-dsvpn_0.1.4-2_amd64.deb
+Size: 12072
+SHA256: 1e89ece6b42368f5c7e399e61a82d4cd870c37b55856a6a5e0568a6fdb8d9d9c
+
+Package: omr-glorytun-tcp
+Version: 0.0.35-6
+Architecture: amd64
+Maintainer: OpenMPTCProuter <contact@openmptcprouter.com>
+Installed-Size: 58
+Depends: meson
+Section: net
+Priority: optional
+Homepage: https://github.com/angt/glorytun
+Description: A small, simple and secure VPN
+ Glorytun is a small, simple and secure VPN
+Filename: ./omr-glorytun-tcp_0.0.35-6_amd64.deb
+Size: 16884
+SHA256: 3fc06efee83bd4398ca55b24c87b35ef0a7905fb7cc93dd7d438be783250810e
+
+Package: omr-glorytun
+Version: 0.3.4-5
+Architecture: amd64
+Maintainer: OpenMPTCProuter <contact@openmptcprouter.com>
+Installed-Size: 84
+Depends: meson
+Section: net
+Priority: optional
+Homepage: https://github.com/angt/glorytun
+Description: A small, simple and secure VPN
+ Glorytun is a small, simple and secure VPN over MUD
+Filename: ./omr-glorytun_0.3.4-5_amd64.deb
+Size: 26968
+SHA256: e5dafdb832fd5ed615b5f7b539b074bb21792ae92b6f70bb22ea9046b3dcde5a
+
+Package: omr-mlvpn
+Version: 3.0.0+20211028.git.ddafba3
+Architecture: amd64
+Maintainer: Laurent Coustet <ed@zehome.com>
+Installed-Size: 163
+Depends: libc6 (>= 2.14), libev4 (>= 1:4.04), libpcap0.8 (>= 1.0.0), libsodium23 (>= 0.6.0), net-tools, adduser, passwd, lsb-base
+Section: net
+Priority: optional
+Homepage: http://www.mlvpn.fr/
+Description: MultiLink Virtual Public Network aggregator.
+ MLVPN aggregates multiple links into one tun/tap tunnel.
+Filename: ./omr-mlvpn_3.0.0+20211028.git.ddafba3_amd64.deb
+Size: 49336
+SHA256: 0cdebbdb405fe154a9f661b1d236784190ffbdb69823d4fcb0333cedf7cd17e2
+
+Package: omr-shadowsocks-libev
+Version: 3.3.5-3
+Architecture: amd64
+Maintainer: OpenMPTCProuter <contact@openmptcprouter.com>
+Installed-Size: 1042
+Depends: libcap2-bin, lsb-base (>= 3.0-6), libc-ares2 (>= 1.11.0~rc1), libc6 (>= 2.14), libev4 (>= 1:4.04), libmbedcrypto3 (>= 2.13), libpcre3, libsodium23 (>= 1.0.12)
+Suggests: haveged, kcptun, simple-obfs
+Breaks: shadowsocks
+Replaces: shadowsocks
+Section: net
+Priority: optional
+Homepage: https://www.shadowsocks.org
+Description: lightweight and secure socks5 proxy
+ Shadowsocks-libev is a lightweight and secure socks5 proxy for
+ embedded devices and low end boxes.
+ .
+ Shadowsocks-libev was inspired by Shadowsocks (in Python). It's rewritten
+ in pure C and only depends on libev, mbedTLS and a few other tiny
+ libraries.
+Filename: ./omr-shadowsocks-libev_3.3.5-3_amd64.deb
+Size: 202884
+SHA256: 7f6b07a64048cbd921a95353877d74ab8b649bc6e1fba4b7915beebb0fa8e856
+
+Package: omr-simple-obfs
+Version: 0.0.5-1
+Architecture: amd64
+Maintainer: Roger Shimizu <rogershimizu@gmail.com>
+Installed-Size: 209
+Depends: libcap2-bin, omr-shadowsocks-libev (>= 3.0.5), libc6 (>= 2.14), libev4 (>= 1:4.04)
+Section: net
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/shadowsocks/simple-obfs
+Description: simple obfusacting plugin for shadowsocks-libev
+ Simple-obfs is a simple obfusacting tool, designed as plugin
+ server/client of shadowsocks-libev.
+ .
+ Simple-obfs is written in pure C and takes advantage of libev to
+ achieve both high performance and low resource consumption.
+Filename: ./omr-simple-obfs_0.0.5-1_amd64.deb
+Size: 53978
+SHA256: 9e141398ae0a0cf08ead82dcaeff51d81268ce12f38018272d970d563a71d13b
+
+Package: omr-vps-admin
+Version: 0.16+20251126
+Architecture: all
+Maintainer: OpenMPTCProuter <contact@openmptcprouter.com>
+Installed-Size: 226
+Depends: python3:any, python3-uvicorn, python3-netaddr, python3-pip, python3-netifaces, python3-aiofiles, python3-psutil, jq, ipcalc
+Section: net
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/ysurac/openmptcprouter-vps-admin
+Description: OpenMPTCProuter VPS admin rest api
+Filename: ./omr-vps-admin_0.16+20251126_all.deb
+Size: 31032
+SHA256: f3765a3f29cb19adc79f9475f45298470f0c3a679682bc4a2bd5fea24d22f456
+
+Package: shadowsocks-go
+Version: 1.14.0
+Architecture: amd64
+Maintainer: ycarus
+Pre-depends: 
+Depends: 
+Recommends: 
+Installed-Size: 9484
+Section: net
+Priority: extra
+Homepage: https://github.com/database64128/shadowsocks-go
+Suggests:
+Provides: shadowsocks-go
+Description: A versatile and efficient proxy platform for secure communications.
+Filename: ./shadowsocks-go-1.14.0-amd64.deb
+Size: 2911488
+SHA256: 4464cddac16ea59d5df57214c8c6552549aaf5a8e771543622ea02d70f329c62
+
+Package: tracebox
+Version: 0.4.4
+Architecture: amd64
+Maintainer: Olivier Tilmans <olivier.tilmans@uclouvain.be>
+Installed-Size: 1011
+Depends: libc6 (>= 2.14), libgcc1 (>= 1:3.0), libjson-c3 (>= 0.10), liblua5.2-0, libpcap0.8 (>= 1.5.1), libstdc++6 (>= 5.2), libnetfilter-queue1, libcurl4-gnutls-dev
+Section: net
+Priority: extra
+Homepage: http://www.tracebox.org
+Description: Tracebox
+ Tracebox is a tool that allows to detect middleboxes on any paths, i.e.,
+ between a source and any destination. Tracebox can be viewed as a tool similar
+ to traceroute as it uses ICMP replies to identify changes in the packets.
+Filename: ./tracebox_0.4.4_amd64.deb
+Size: 221882
+SHA256: 9596c2c9ebd76c5d7c68c1bdf04b4487a5f20ba80f9a2e38fb5521c61ca26ec0
+
+Package: v2ray
+Version: 5.32.0
+Architecture: amd64
+Maintainer: dreamrover
+Pre-depends: 
+Depends: 
+Recommends: 
+Installed-Size: 57692
+Section: net
+Priority: extra
+Homepage: https://github.com/v2fly/v2ray-core
+Suggests:
+Provides: v2ray, v2ctl
+Description: Project V
+ Project V is a set of network tools that help you to build your own computer network. It secures your network connections and thus protects your privacy. See our website for more information.
+Filename: ./v2ray-5.32.0-amd64.deb
+Size: 11546872
+SHA256: ea0a26d5fe9e6051543197624031051c3452d9c5ae2f29d970e47a2e6e32909c
+
+Package: v2ray-plugin
+Version: 4.43.0
+Architecture: amd64
+Maintainer: OpenMPTCProuter <contact@openmptcprouter.com>
+Installed-Size: 12273
+Depends: omr-shadowsocks-libev
+Section: net
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/shadowsocks/v2ray-plugin
+Description: OpenMPTCProuter VPS admin rest api
+Filename: ./v2ray-plugin_4.43.0_amd64.deb
+Size: 3464982
+SHA256: 38493e2d31b7f6d8b3da05ef8313c44892f0ad429a06d1a0879c0f8d6ebe0148
+
+Package: xray
+Version: 25.8.3
+Architecture: amd64
+Maintainer: dreamrover
+Pre-depends: 
+Depends: 
+Recommends: 
+Installed-Size: 59144
+Section: net
+Priority: extra
+Homepage: https://github.com/XTLS/Xray-core
+Suggests:
+Provides: xray
+Description: Project X
+ Xray, Penetrates Everything. Also the best v2ray-core, with XTLS support.
+Filename: ./xray-25.8.3-amd64.deb
+Size: 12507692
+SHA256: b1da0ed1e33890c3d51375fad3f1badda614a738eef8b3b5bf05a736eaf2142d
+

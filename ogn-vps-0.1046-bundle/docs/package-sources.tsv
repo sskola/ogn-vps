@@ -1,0 +1,14 @@
+file	sha256	source
+libjson-c3_0.12.1+ds-2+deb10u1_amd64.deb	5b010246a415b210cb621a54324534cab5ac2cd94481a80705a0f2c426ae8a92	https://archive.debian.org/debian/pool/main/j/json-c/libjson-c3_0.12.1+ds-2+deb10u1_amd64.deb
+omr-dsvpn_0.1.4-2_amd64.deb	1e89ece6b42368f5c7e399e61a82d4cd870c37b55856a6a5e0568a6fdb8d9d9c	https://repo.openmptcprouter.com/pool/main/o/omr-dsvpn/omr-dsvpn_0.1.4-2_amd64.deb
+omr-glorytun-tcp_0.0.35-6_amd64.deb	3fc06efee83bd4398ca55b24c87b35ef0a7905fb7cc93dd7d438be783250810e	https://repo.openmptcprouter.com/pool/main/o/omr-glorytun-tcp/omr-glorytun-tcp_0.0.35-6_amd64.deb
+omr-glorytun_0.3.4-5_amd64.deb	e5dafdb832fd5ed615b5f7b539b074bb21792ae92b6f70bb22ea9046b3dcde5a	https://repo.openmptcprouter.com/pool/main/o/omr-glorytun/omr-glorytun_0.3.4-5_amd64.deb
+omr-mlvpn_3.0.0+20211028.git.ddafba3_amd64.deb	0cdebbdb405fe154a9f661b1d236784190ffbdb69823d4fcb0333cedf7cd17e2	https://repo.openmptcprouter.com/pool/main/o/omr-mlvpn/omr-mlvpn_3.0.0+20211028.git.ddafba3_amd64.deb
+omr-shadowsocks-libev_3.3.5-3_amd64.deb	7f6b07a64048cbd921a95353877d74ab8b649bc6e1fba4b7915beebb0fa8e856	https://repo.openmptcprouter.com/pool/main/o/omr-shadowsocks-libev/omr-shadowsocks-libev_3.3.5-3_amd64.deb
+omr-simple-obfs_0.0.5-1_amd64.deb	9e141398ae0a0cf08ead82dcaeff51d81268ce12f38018272d970d563a71d13b	https://repo.openmptcprouter.com/pool/main/o/omr-simple-obfs/omr-simple-obfs_0.0.5-1_amd64.deb
+omr-vps-admin_0.16+20251126_all.deb	f3765a3f29cb19adc79f9475f45298470f0c3a679682bc4a2bd5fea24d22f456	User-provided local file, original URL not verified
+shadowsocks-go-1.14.0-amd64.deb	4464cddac16ea59d5df57214c8c6552549aaf5a8e771543622ea02d70f329c62	Previously captured OMR direct binary: https://www.openmptcprouter.com/debian/shadowsocks-go-1.14.0-amd64.deb
+tracebox_0.4.4_amd64.deb	9596c2c9ebd76c5d7c68c1bdf04b4487a5f20ba80f9a2e38fb5521c61ca26ec0	https://repo.openmptcprouter.com/pool/main/t/tracebox/tracebox_0.4.4_amd64.deb
+v2ray-5.32.0-amd64.deb	ea0a26d5fe9e6051543197624031051c3452d9c5ae2f29d970e47a2e6e32909c	Previously captured OMR direct binary: https://www.openmptcprouter.com/debian/v2ray-5.32.0-amd64.deb
+v2ray-plugin_4.43.0_amd64.deb	38493e2d31b7f6d8b3da05ef8313c44892f0ad429a06d1a0879c0f8d6ebe0148	Previously captured OMR direct binary: https://www.openmptcprouter.com/debian/v2ray-plugin_4.43.0_amd64.deb
+xray-25.8.3-amd64.deb	b1da0ed1e33890c3d51375fad3f1badda614a738eef8b3b5bf05a736eaf2142d	Previously captured OMR direct binary: https://www.openmptcprouter.com/debian/xray-25.8.3-amd64.deb
